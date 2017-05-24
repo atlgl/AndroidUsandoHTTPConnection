@@ -72,14 +72,14 @@ public class MainActivity extends AppCompatActivity {
             try {
                 URL url = new URL((String) params[0]);
 
-                Producto producto = new Producto(10, "JuanPi", "....", 10.0, "", null);
+                Producto producto = new Producto(10, "Cartera", "cartera de piel de vibora", 1000.0, "2017/05/25", null);
 
                 //String producto = "{\"nombre\":\"ace\",\"descripcion\":\"...\",\"precio\":\"28.00\",\"fecha\":\"2017-03-29 17:18:36\",\"urlfoto\":null}";
 
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
                 con.setDoOutput(true);
 
-                con.setFixedLengthStreamingMode(producto.toString().getBytes().length);
+                con.setFixedLengthStreamingMode(producto.toJSON().getBytes().length);
                 con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
 
                 con.setRequestMethod("POST");
@@ -194,13 +194,13 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(List<Producto> s) {
             super.onPostExecute(s);
-            for(int i=0;i<s.size();i++) {
-                txtdatos.append(s.get(i).toString());
-            }
+        //for(int i=0;i<s.size();i++) {
+          //      txtdatos.append(s.get(i).toString());
+            //}
             ///adaptador
-            //adapterProductos=new AdapterProductos(getBaseContext(),s);
+            adapterProductos=new AdapterProductos(getBaseContext(),s);
 
-            //listav.setAdapter(adapterProductos);
+            listav.setAdapter(adapterProductos);
         }
     }
 }

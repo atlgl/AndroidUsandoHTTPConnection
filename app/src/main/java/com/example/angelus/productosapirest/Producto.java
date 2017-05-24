@@ -85,4 +85,10 @@ public class Producto {
                 "\",\"precio\":\""+this.precio+
                 "\",\"fecha\":\""+this.fecha+"\",\"urlfoto\":null}";
     }
+    public String toJSON() {
+        return "{\"nombre\":\""+this.nombre+
+                "\",\"descripcion\":\""+this.descripcion+
+                "\",\"precio\":\""+this.precio+
+                "\",\"fecha\":\""+this.fecha+"\",\"urlfoto\":null}";
+    }
 }
