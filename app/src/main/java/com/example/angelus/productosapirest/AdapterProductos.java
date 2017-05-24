@@ -15,25 +15,26 @@ import java.util.zip.Inflater;
 
 public class AdapterProductos extends ArrayAdapter<Producto> {
 
-    private List<Producto> productos;
+    private List<Producto> listap;
     private Context ctx;
     public AdapterProductos(Context context, List<Producto> lista) {
+        //pasar la lista pues el arreglo es de tipo producto
         super(context, R.layout.item_producto,lista);
         this.ctx=context;
-        productos=lista;
+        listap=lista;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        LayoutInflater inflater=LayoutInflater.from(ctx);
-        View view=inflater.inflate(R.layout.item_producto,parent,true);
+        LayoutInflater inflater=LayoutInflater.from(getContext());
+        View view=inflater.inflate(R.layout.item_producto,null);
 
         TextView txtv1=(TextView) view.findViewById(R.id.txtProducto);
         TextView txtv2=(TextView) view.findViewById(R.id.txtId);
 
-        txtv1.setText(productos.get(position).getNombre());
-        txtv2.setText(productos.get(position).getId());
+        txtv1.setText(listap.get(position).getNombre());
+        txtv2.setText(Integer.toString(listap.get(position).getId()));
 
         return view;
     }
