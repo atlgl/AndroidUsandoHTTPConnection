@@ -39,3 +39,7 @@ public class AdapterProductos extends ArrayAdapter<Producto> {
         return view;
     }
 }
+
+
+
+
